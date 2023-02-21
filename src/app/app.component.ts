@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { of, Observable, from } from 'rxjs';
+import { of, Observable, from, filter } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -47,4 +47,19 @@ users$
   )
   .subscribe((user) => console.log(user));
 
-//use 'rxjs' operators to dipslay the name in uppercase and age is doubled.
+//Exercises
+
+console.log('\n\nEven:');
+numbers$
+  .pipe(filter((numbers) => numbers % 2 == 0))
+  .subscribe((numbers) => console.log(numbers));
+
+console.log('\n\nOdd:');
+numbers$
+  .pipe(filter((numbers) => numbers % 2 != 0))
+  .subscribe((numbers) => console.log(numbers));
+
+console.log('\n\nOdd * 2:');
+numbers$
+  .pipe(filter((numbers) => numbers % 2 == 0))
+  .subscribe((numbers) => console.log(`${numbers} = ${numbers * 2}`));
